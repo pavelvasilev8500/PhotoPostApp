@@ -1,0 +1,65 @@
+﻿<Window x:Class="PhotoPostApp.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="{Binding Title}" 
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Background="Transparent"
+        ResizeMode="NoResize"
+        Height="650" 
+        Width="1025">
+    
+    <Grid>
+
+        <Border Background="#212328"
+                CornerRadius="8"/>
+
+        <Border CornerRadius="8,8,0,0" 
+                Background="#647080" 
+                Height="20" 
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Top" 
+                Opacity="0.465">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="4" 
+                                  Direction="270" 
+                                  Opacity="0.625" 
+                                  BlurRadius="6"/>
+            </Border.Effect>
+        </Border>
+
+        <StackPanel Orientation="Horizontal"
+                    Margin="5, 0, 0, 0"
+                    Height="20"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Stretch">
+            <Button x:Name="close"
+                    Width="12" 
+                    Height="12"
+                    Style="{DynamicResource CloseButtonStyle}"
+                    Command="{Binding Close}"/>
+            <Button x:Name="minimaze"
+                    Click="minimaze_Click"
+                    Margin="5 0 0 0"
+                    Width="12" 
+                    Height="12"
+                    Style="{DynamicResource MinimazeButtonStyle}"/>
+            <Grid>
+                <TextBlock Text="PhotoPost"
+                           Foreground="White"
+                           HorizontalAlignment="Center"/>
+                <Grid Width="990" 
+                      Background="Transparent"
+                      PreviewMouseLeftButtonDown="Drag_Move"/>
+            </Grid>
+        </StackPanel>
+
+        <ContentControl
+        Margin="0, 20, 0, 0"
+        prism:RegionManager.RegionName="ContentRegion" />
+        
+    </Grid>
+    
+</Window>
